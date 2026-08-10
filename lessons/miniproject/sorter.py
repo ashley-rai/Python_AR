@@ -1,23 +1,28 @@
 import os
 from pathlib import Path
 
-folderPath = Path("C:/Users/User/Downloads")
+folderToSort = Path("C:/Users/User/Downloads")
 
-files = os.listdir(folderPath)
+filesInFolder = os.listdir(folderToSort)
 
-our_suffixes: list[str] = [".sb3", ".mp3", ".htm", ".exe", ".msix"]
+# We sort based on these suffixes
+suffixesToSort: list[str] = [".sb3", ".mp3", ".htm", ".exe", ".msix"]
 
-# print(files)
 
-for file in files:
-    suffix = Path(file).suffix
-    if suffix in our_suffixes:
-        destination_folder = folderPath / suffix.removeprefix(".")
-        destination_folder.mkdir(exist_ok=True)
-        
-        source = folderPath / file
-        destination = destination_folder / file
-        
-        source.rename(destination)
-        print(f"Moved: {file} -> {destination_folder}")
+def createFolderAndMoveFile(fileSuffix: str):
+    destination_folder = folderToSort / fileSuffix.removeprefix(".")
+    destination_folder.mkdir(exist_ok=True)
+
+    source = folderToSort / file
+    destination = destination_folder / file
+
+    source.rename(destination)
+    print(f"Moved: {file} -> {destination_folder}")
+
+
+for file in filesInFolder:
+    fileSuffix = Path(file).suffix
+
+    if fileSuffix in suffixesToSort:
+        createFolderAndMoveFile(fileSuffix)
     # print(suffix)
