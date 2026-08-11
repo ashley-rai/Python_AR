@@ -51,3 +51,29 @@ def progressUpdate(steps: int, goal: int):
 progressUpdate(2, 2)
 progressUpdate(6, 221)
 progressUpdate(25, 52)
+
+
+printNum(5)
+
+def multiply(a, b):
+    return a * b
+
+print(multiply(5, 3))
+ 
+
+printNum(6)
+
+
+def playerRegistration(nickName="unnamed", race="goblin"):
+    if nickName == "unnamed":
+        print(f"Твоя раса {race}, но имя еще не определено")
+    else:
+        print(f"Регистрация пройдена! Добро пожаловать на поля сражений, {nickName} из расы {race}")
+
+
+playerRegistration()
+
+playerRegistration("Aragorn", "elf")
+playerRegistration("Grom", "orc")
+playerRegistration(race="vampire")
+playerRegistration("Legolas")
